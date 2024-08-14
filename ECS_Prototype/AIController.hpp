@@ -2,15 +2,24 @@
 #include "SparseArray.hpp"
 #include "TranslateComponent.hpp"
 #include "Debug.hpp"
+#include "SystemBase.hpp"	 
+#include "Archetype.hpp"
+#include "MovementController.hpp"
 
-class AIController {
+class AIController : public SystemBase<Translation>  {
 private:
-	AIController() {};
-public:
-	static inline void seekAndDestroy(MovementController * agentController, size_t * target, SparseArray<Translation> * translates)
+	size_t m_agent;
+	size_t m_target;
+public:	 
+
+	AIController(size_t agent, size_t target = 0):m_agent(agent), m_target(target) {};
+	const bool isThreadSafe() const override{ return false; }
+
+	void execute() override
 	{
+		MovementController agentController(m_agent);
 		// Check lateral difference, go up or down if target is above or below
-		switch ( agentController->lateralComp(translates->get(*target)->y) ) {
+		switch ( agentController->lateralComp(agentTranslates->get(*target)->y) ) {
 			case 1:
 				agentController->accelerateUp();
 				break;
@@ -26,7 +35,7 @@ public:
 		}
 
 		// Same as above but left and right
-		switch ( agentController->verticalComp(translates->get(*target)->x) ) {
+		switch ( agentController->verticalComp(agentTranslates->get(*target)->x) ) {
 			case 1:
 				agentController->accelerateRight();
 				break;

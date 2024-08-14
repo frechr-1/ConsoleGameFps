@@ -17,7 +17,6 @@ public:
 	void Init()
 	{   
 		Entity e = em.createEntity();
-		cm.addComponent(e, Translation{});
-		
+		cm.addComponent(e, Translation{1.0f, 1.0f});
 	}
 };

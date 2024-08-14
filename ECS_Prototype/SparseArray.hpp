@@ -8,11 +8,12 @@ template <typename Comp>
 class SparseArray {
 private:
 	static const size_t MaxEnts = 1000;
+	const size_t NULL_ELEMENT = -1;
+	size_t length;
+
 	int sparse[MaxEnts];
 	size_t denseIndices[MaxEnts];
-	std::array<Comp, MaxEnts> dense;
-	size_t length;
-	const size_t NULL_ELEMENT = -1;
+	std::array<Comp, MaxEnts> dense;  
 
 public:
 	SparseArray() : length(0)

@@ -3,6 +3,7 @@
 #include <stack>
 
 // Wrapper for an array, but with extra logic regarding deletion and reuse of deleted entities.
+// To make this cache friendly, we need to ensure that the actual entities are densely packed, but how?
 class EntityManager {
 using Entity = size_t;
 private:
@@ -11,6 +12,7 @@ private:
 	std::array<bool, 1000> entities;
 	std::stack<Entity> availableIndices;
 	size_t nextIndex = 0;
+
 
 public:
 	EntityManager() : entities{}, availableIndices{}, nextIndex(0), INACTIVE(false), ACTIVE(true)

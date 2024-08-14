@@ -1,8 +1,9 @@
+#pragma once
 #include "SparseArray.hpp"
 #include "TranslateComponent.hpp"
-#pragma once
+#include "ISystem.hpp"
 
-class PhysicsController {
+class PhysicsController : public ISystem {
 private:
 	PhysicsController() {};
 	~PhysicsController() {};

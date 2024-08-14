@@ -130,11 +130,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AIController.hpp" />
+    <ClInclude Include="Archetype.hpp" />
     <ClInclude Include="EntityManager.hpp" />
     <ClInclude Include="Game.hpp" />
+    <ClInclude Include="IArchetype.hpp" />
     <ClInclude Include="IKeyState.hpp" />
     <ClInclude Include="Debug.hpp" />
     <ClInclude Include="PhysicsController.hpp" />
+    <ClInclude Include="ISystem.hpp" />
+    <ClInclude Include="SystemBase.hpp" />
     <ClInclude Include="SystemManager.hpp" />
     <ClInclude Include="WindowsKeyState.hpp" />
     <ClInclude Include="MovementController.hpp" />
@@ -142,6 +146,7 @@
     <ClInclude Include="TranslateComponent.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AIController.cpp" />
     <ClCompile Include="BoxCollider.hpp" />
     <ClCompile Include="ComponentManager.hpp" />
     <ClCompile Include="SparseArray.hpp" />

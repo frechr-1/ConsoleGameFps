@@ -2,19 +2,20 @@
 #include <algorithm>
 #include "TranslateComponent.hpp"
 #include "SparseArray.hpp"
+#include "ComponentManager.hpp"
 
-class MovementController {
+class MovementController : public SystemBase<Translation>
+{
 private:
     Translation * translation; // Reference to the Translation component
 
 public:
-    MovementController(SparseArray<Translation> * translations, size_t entity) 
+    MovementController(size_t entity) 
     {
-        translation = translations->get(entity);
+        translation =  getComponent<Translation>(entity);
     }
-
-    // Update function to handle movement
-    void update() {
+                                    
+    void execute() override {
         // Update position based on velocity
         translation->x += translation->dx;
         translation->y += translation->dy;
